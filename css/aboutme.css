@@ -1,0 +1,77 @@
+/*关于我*/
+div.content {background-color: #eeeeee;position: relative;top:2.75em;margin: 0 auto;padding: 0;height: 100%;}
+/*.content的相对定位的原始位置居然不在导航栏下边？？？*/
+div.content p.words {text-align: center;word-spacing: 0.1em;color: blue;font-size: 1.5em;margin:0;position: relative;}
+div.content ul {text-align: left;list-style-type:none;font-size: 1.6em;margin-left: 40%}
+div.content li:first-child  {color: red;}
+
+div.content img#study1 {
+						position:absolute;
+						animation-name: myfirst1;
+						animation-duration: 5s;
+						animation-timing-function: linear;
+						animation-iteration-count: infinite;
+						animation-direction: alternate;
+						animation-play-state: running;
+						/* Firefox: */
+						-moz-animation-name: myfirst1;
+						-moz-animation-duration: 5s;
+						-moz-animation-timing-function: linear;
+						-moz-animation-iteration-count: infinite;
+						-moz-animation-direction: alternate;
+						-moz-animation-play-state: running;
+						/* Safari 和 Chrome: */
+						-webkit-animation-name: myfirst1;
+						-webkit-animation-duration: 5s;
+						-webkit-animation-timing-function: linear;
+						-webkit-animation-iteration-count: infinite;
+						-webkit-animation-direction: alternate;
+						-webkit-animation-play-state: running;
+						/* Opera: */
+						-o-animation-name: myfirst1;
+						-o-animation-duration: 5s;
+						-o-animation-timing-function: linear;
+						-o-animation-iteration-count: infinite;
+						-o-animation-direction: alternate;
+						-o-animation-play-state: running;	
+						}
+						@keyframes myfirst1
+						{
+							from {left:1em;top:60%;}
+							to   {left:1em;top:25%;}
+						}
+div.content img#study2 {
+						position:absolute;
+						animation-name: myfirst2;
+						animation-duration: 5s;
+						animation-timing-function: linear;
+						animation-iteration-count: infinite;
+						animation-direction: alternate;
+						animation-play-state: running;
+						/* Firefox: */
+						-moz-animation-name: myfirst2;
+						-moz-animation-duration: 5s;
+						-moz-animation-timing-function: linear;
+						-moz-animation-iteration-count: infinite;
+						-moz-animation-direction: alternate;
+						-moz-animation-play-state: running;
+						/* Safari 和 Chrome: */
+						-webkit-animation-name: myfirst2;
+						-webkit-animation-duration: 5s;
+						-webkit-animation-timing-function: linear;
+						-webkit-animation-iteration-count: infinite;
+						-webkit-animation-direction: alternate;
+						-webkit-animation-play-state: running;
+						/* Opera: */
+						-o-animation-name: myfirst2;
+						-o-animation-duration: 5s;
+						-o-animation-timing-function: linear;
+						-o-animation-iteration-count: infinite;
+						-o-animation-direction: alternate;
+						-o-animation-play-state: running;
+						}
+						@keyframes myfirst2
+						{
+							from {right:1em;top:25%;}
+							to   {right:1em;top:60%;}
+						}

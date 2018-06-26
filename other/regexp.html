@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式练习</title>
+	<style>
+	div {margin:2px;}
+	</style>
+	<script>
+	function text()
+	{
+		var con=document.getElementById('mytext').value;
+		
+		var myReg=/(\d){4}/gi;
+		while(res=myReg.exec(con))
+			{alert(res);}
+	}
+	function text1()
+	{
+		var con=document.getElementById('mytext1').value;
+		
+		var myReg=/小孩子/gi;
+		while(res=myReg.exec(con))
+			{alert(res);}
+	}
+	function text2()
+	{
+		var con=document.getElementById('mytext2').value;
+		
+		var myReg=/(\d)\1(\d)\2(\d)\3/gi;
+		while(res=myReg.exec(con))
+			{alert(res);}
+	}
+	function text3()
+	{
+		var con=document.getElementById('mytext3').value;
+		
+		var myReg=/(\d){5}-(\d)\2{2}(\d)\3{2}(\d)\4{2}/gi;
+		while(res=myReg.exec(con))
+			{alert(res);}
+	}
+		function text4()
+	{
+		var con=document.getElementById('mytext4').value;
+		
+		var myReg=/(.){3}/gi;
+		while(res=myReg.exec(con))
+			{alert(res);}
+	}
+		function text5()
+	{
+		var con=document.getElementById('mytext5').value;
+		alert(con);
+		var myReg=/^([a-zA-Z0-9_-]+)@([0-9A-Za-z]+\.)+([a-z]{2,6})$/;
+		// var myReg=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+		var res=myReg.test(con);
+		alert(res)
+		if (res)
+			{alert("是邮件");}
+		else 
+			{alert("不是邮件");}	
+	}
+			function text6()
+	{
+		var con=document.getElementById('mytext6').value;
+		
+		var myReg=/(^[1-9][0-9]*)|(0\.[1-9]+)/;
+		if (myReg.test(con))
+			alert("是数字");
+		else
+			alert("不是数字");
+	}
+
+	</script>
+</head>
+<body>
+	<div style="border:1px solid black;width:380px;float:left;">
+	<textarea name="mytext" id="mytext" cols="30" rows="10"></textarea>
+	<input type="button" onclick="text()" value="匹配四个连续数">		
+	</div>
+	<div style="border:1px solid black;width:380px;float:left;">
+	<textarea name="mytext1" id="mytext1" cols="30" rows="10"></textarea>
+	<input type="button" onclick="text1()" value="匹配小孩子三个字">		
+	</div>
+	<div style="border:1px solid black;width:440px;float:left;">
+	<textarea name="mytext2" id="mytext2" cols="30" rows="10"></textarea>
+	<input type="button" onclick="text2()" value="12、34、56位相同的数字">		
+	</div>
+	<div style="border:1px solid black;width:400px;float:left;">
+	<textarea name="mytext3" id="mytext3" cols="30" rows="10"></textarea>
+	<input type="button" onclick="text3()" value="匹配12345-111222333">		
+	</div>
+	<div style="border:1px solid black;width:440px;float:left;">
+	<textarea name="mytext4" id="mytext4" cols="30" rows="10"></textarea>
+	<input type="button" onclick="text4()" value="匹配任意三个连续相同字符">		
+	</div>
+	<div style="border:1px solid black;width:400px;float:left;">
+	<textarea name="mytext5" id="mytext5" cols="30" rows="10"></textarea>
+	<input type="button" onclick="text5()" value="验证电子邮件">		
+	</div>
+	<div style="border:1px solid black;width:400px;float:left;">
+	<input id="mytext6"  />
+	<input type="button" onclick="text6()" value="验证是不是一个数">		
+	</div>
+
+</body>
+</html>

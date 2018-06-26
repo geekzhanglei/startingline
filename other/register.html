@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户注册</title>
+	<script type="text/javascript">
+		//创建xmlhttprequest引擎
+		function getXmlHttpObj()
+		{	
+			var XmlHttpRequestObj;
+			if (window.ActiveXobject)
+			{
+				XmlHttpRequestObj=new ActiveXobject("Microsoft.XMLHTTP");
+			}
+			else
+			{
+				XmlHttpRequestObj=new XMLHttpRequest();
+			}
+			return XmlHttpRequestObj;
+		}
+		//验证用户名的方法
+		var myXmlHttpRequest="";
+		function checkname()
+		{
+			myXmlHttpRequest=getXmlHttpObj();   
+			if (myXmlHttpRequest)
+				{   
+				// var url="/../ajax/registerProcess.php?mytime="+new  Date()+"&username="+$("username").value;
+				var data="username="+$('username').value;
+				var url="/ajax/registerProcess.php";
+				//打开请求
+				myXmlHttpRequest.open("post",url,true);
+				//指定回调函数，chuli是函数名,这是一种指向
+				//设置post方式的http头
+				myXmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				myXmlHttpRequest.onreadystatechange=chuli;
+				//真的发送请求
+				//get填入null，post请求则填入实际数据
+				myXmlHttpRequest.send(data);    
+				// 注意，本文件必须从服务器（localhost/other/register.html）地址访问，不能直接点击这个文件
+ 				}
+ 				
+		}
+		//回调函数
+		function chuli()
+		{
+			// alert(myXmlHttpRequest.readyState);  其实写在这里才是对的
+			if(myXmlHttpRequest.readyState==4)
+			 {$("myRes").value=myXmlHttpRequest.responseText;}
+		}
+
+		//获得特定id的元素
+		function $(id)
+		{return document.getElementById(id);}
+	</script>
+</head>
+
+<body>
+	<form action="">
+		用户昵称：<input id="username" vlue="username1" type="text" onkeyup="checkname()">
+		<input type="text" id="myRes" style="color:red;border:0;"><br>
+		用户密码：<input id="password" type="password"><br>
+		密码确认：<input id="pwack" type="password"><br>
+		电子邮件：<input id="emailofform" type="email"><br>
+		<input id="regbutton" type="submit" value="用户注册">
+	</form>
+</body>
+</html>

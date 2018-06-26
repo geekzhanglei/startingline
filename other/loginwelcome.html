@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>欢迎登录</title>
+	<style>
+	p {text-align: center;font-size: 2em;color:blue;}
+	</style>
+	<script>
+		
+		function myspan()
+		{
+			$("sec").innerText=$("sec").innerText-1;
+			if ($("sec").innerText=="0")
+			{open("straw.html","_self")}	
+		}
+		setInterval("myspan()",1000);
+		function $(id)
+		{
+			var retu=document.getElementById(id);
+			return retu;
+		}
+	</script>
+</head>
+<body style="background-color:#CEFFCE" onload="myspan()">
+	<p>恭喜您登录成功，页面将<span id="sec">6</span>s后跳转</p>
+</body>
+</html>

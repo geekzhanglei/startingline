@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习</title>
+	<style>
+	#neibucsshuoqu {width:400px;height: 300px;margin-left: 500px;background-color: blue;}
+	</style>
+</head>
+<body>
+	<a href="MAILTO:41572876@qq.com">给自己写信(仅支持outlook)</a><hr>
+	<p>表单图片按钮：</p>
+	<input type="image" src="../image/icon.png">
+	<hr>
+	<input type="radio" name="sex">男
+	<input type="radio" name="sex">女<hr>
+	<p>hidden类型：</p><br>
+	<input type="hidden" name="sex" value="123">你知道么<hr>
+	<p>文本域</p>
+	<textarea name="文本框" id="textarea" cols="30" rows="10">请在这里输入</textarea><hr>
+	请选择你要上传的文件：<br>
+	<input type="file" name="xx">请选择要上传的文件</input><hr>
+	*********字符实体*********
+	<p style="font-size:5em;">&copy; &reg;</p>
+	<hr>
+	<script type="text/javascript">
+	function disp_prompt()
+	  {
+	  var name=prompt("Please enter your name","")
+	  if (name!=null && name!="")
+	    {
+	    document.write("Hello " + name + "!")
+	    }
+	  }
+	</script>
+	<input type="button" onclick="disp_prompt()"
+	value="Display a prompt box" />
+	<hr>
+	<script type="text/javascript">
+		function calculate()
+		{	
+			var time=new Array();
+			var avertime=new Array();
+			var m=0;
+			for(var i=0;i<5;i++)
+			{
+				m=i+1;
+				time[i]=prompt("请输入第"+m+"个小学生的时间","直接输入无单位数字");
+				// var a=typeof(time[i]);
+				// alert(a);
+			}
+			
+			for(var i=0;i<5;i++)
+				{	
+					// prompt返回值是字符串
+					avertime[i]=100/parseFloat(time[i]);
+					// alert(avertime);
+
+				}
+			var n=0;
+				for(var i=0;i<5;i++)
+				{
+				n=i+1;
+				alert("第"+n+"个小学生的平均成绩是："+avertime[i] +"m/s");
+				}
+		}
+	</script>
+	<input type="button" onclick="calculate()" value="计算5个小学生的平均成绩">
+	<hr>
+	<script>
+	var abc=89;
+	function text()
+	{
+		var abc=900; 
+		// 带着var则重新定义了abc，为900；否则使用全局变量的var，为89
+	}
+	function butt()
+	{
+	text();
+	alert(abc);	
+	}
+	</script>
+	<input type="button" onclick="butt()" value="测试带不带var的情况">
+	<hr>
+	<p>动态时间显示案例</p>
+	<p>现在是北京时间：<span id="mytime"></span></p>
+	<script>
+	function mydate()
+	{
+		var mytimevalue=new Date();
+		var timevalue=mytimevalue.toLocaleString();
+		document.getElementById("mytime").innerText=timevalue;		
+	}		
+	setInterval("mydate()",1000);
+	</script>
+	<hr>
+	<input type="button" id="openwin" onclick="mynewwin()" value="打开新窗口">
+	<p>文字为：<span id="myspan1">这是原来的文字</span></p>
+	<script>
+		function mynewwin()
+		{
+		open("newwindow.html","_blank");			
+		}
+	</script>
+	<hr>
+	<script type="text/javascript">
+	window.status="Some text in the status bar!!"
+	</script>
+	<p>请看状态栏中的文本。设置状态栏文本在IE生效，其他chrome、ff没有状态栏</p>
+	<hr>
+	<!-- 本例必须传入event参数 -->
+	<p>输入一个六位数，要求如果输入的不是数字则提示重新输入</p>
+	<input type="text" id="shuru1" onkeypress="return test1(event)" value="在这里输入数字">
+	<input type="submit" id="tijiao" value="提交">
+	<script>
+		function test1(event)
+		{
+			 
+			if ((event.keyCode<48)||(event.keyCode>57))
+				{alert("输入的不是数字，请输入数字");
+					return false;
+				}
+		}
+	</script>
+	<hr>
+	<p>动态创建元素(例如：超链接)</p>
+
+	<input type="button" id="butt2" onclick="mynewelement()" value="创建百度链接">
+	<div id="div" style="width:200px;height:200px;border:2px solid black;text-align:center">div</div>
+	<input type="button" onclick="text2()" value="删除一个元素">
+	<script>
+    function mynewelement()
+    {
+	var myelement=document.createElement("a");
+	myelement.href="http://www.baidu.com";
+	myelement.innerText="指向百度";
+	myelement.id="id1";
+	document.getElementById('div').appendChild(myelement);
+    }
+    function text2()
+    {
+    	document.getElementById("div").removeChild(document.getElementById("id1"));
+    }
+	</script>
+	<hr>
+	<p>本例是js获取内部css样式的方法，但是不能修改</p>
+	<div id="neibucsshuoqu">
+	</div>	
+	<input type="button" onclick="myhuoqu()" value="获取css内部样式">
+	<script>
+		function myhuoqu()
+		{
+		var bkgrdrgb=getDefaultStyle($("neibucsshuoqu"),"background-color");
+		alert(bkgrdrgb);		
+		}
+	
+		function getDefaultStyle(obj,attribute)
+		{ 
+		// 返回最终样式函数，兼容IE和DOM，设置参数：元素对象、样式特性(重要知识点)   
+ 		return obj.currentStyle?obj.currentStyle[attribute]:document.defaultView.getComputedStyle(obj,false)[attribute];
+ 		}
+ 		function $(id)
+		{
+			var idres=document.getElementById(id);
+			return idres;
+		}
+	</script>
+	<hr>
+		<p><span id="myspan" onclick="test()" style="background-color:gray;border:1px solid red;">
+		-</span>
+	画江湖之不良人
+	</p>
+	<ul id="myul" style="list-style-type:none;padding:0;display:block;margin-left:1.5em;">
+		<li>不良帅</li>
+		<li>冥&nbsp帝</li>
+		<li>女&nbsp帝</li>
+		<li>李存孝</li>
+		<li>张玄陵</li>
+	</ul>
+	<script>
+	function test()
+	{
+		if (document.getElementById('myspan').innerText=="-")
+			{		
+				document.getElementById("myul").style.display="none";
+				document.getElementById('myspan').innerText="+";
+			}
+		else 
+			{	
+				document.getElementById('myspan').innerText="-";
+				document.getElementById("myul").style.display="block";
+			}
+	}
+	</script>
+	<hr>
+		<p>在已有的三个选项中，动态添加选项（第四个选项）</p>
+	<select name="myselect" id="myselect" onchange="myadd()">
+		<option value="默认">----请选择----</option>
+		<option value="javascript">javascript</option>
+		<option value="html">html</option>
+		<option value="css">css</option>
+	</select>
+	<textarea name="mytext" id="mytext" cols="30" rows="10" style="vertical-align:top"></textarea>
+	<script>
+
+	var myopt=document.createElement("option");
+	myopt.value="其他技术";
+	myopt.text="其他技术";
+	// 三种方法均可行,方法一直接用id号作为DOM元素节点
+	myselect.add(myopt);
+	// document.getElementById("myselect").add(myopt);
+	// document.getElementById("myselect").appendChild(myopt);		
+	function myadd()
+	{
+		mytext.value+=myselect.value+"\r\n"
+	}
+	</script>
+	<hr>
+		<p>表单获取的两种方法</p>
+	<form action="#" style="width:270px;">
+		姓&nbsp&nbsp名：<input type="text" name="username">
+		密&nbsp&nbsp码: <input type="password">
+		电子邮件: <input type="email">
+		<input type="submit" value="提交" style="position:relative;margin-left:59px;">
+		<input type="reset"  value="重置" style="position:relative;margin-left:59px;">
+	</form>
+	<br>
+	<form action="#" style="width:270px;">
+		姓&nbsp&nbsp名：<input type="text">
+		密&nbsp&nbsp码: <input type="password">
+		电子邮件: <input type="email">	
+	</form>
+	<input type="button" value="打印表单个数2种方法" onclick="testform()">
+	<script>
+	function testform()
+	{
+		var forms=document.forms;
+		alert(forms.length);
+		alert(forms[0].username.value);
+		alert(forms.item(0).username.value);
+
+	}
+	</script>
+</body>
+</html>

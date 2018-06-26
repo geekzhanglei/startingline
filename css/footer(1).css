@@ -1,0 +1,3 @@
+/*页脚部分*/
+div.foot {width: 100%;background-color: #dddddd;margin: 0 auto;padding:0;position: absolute;bottom:0;}
+div.foot p {width:100%;text-align: center;font-size: 0.6875em;margin: 0 auto;}

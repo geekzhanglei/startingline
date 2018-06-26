@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>透视立方体</title>
+	<style>
+		body {margin: 0}
+		#stage {
+			width:100%;
+			height:500px;
+			position: relative;
+			margin: 0;
+			padding: 0;
+			background-color: #eee;
+			}
+	    #cube	{
+	    		width:300px;
+	    	    height:300px;
+	    	    position: relative;
+	    	    left:30%;
+				top:20%;
+	 			transform:translateZ(-150px);
+	    		
+	    		transform-style:preserve-3d;
+	    		/*152、153效果最明显*/
+	    		perspective:1000px;  
+				perspective-origin:50% 80%;
+	    		}
+		
+		.spinning {
+					 animation: spincube 8s infinite ease-in-out;
+					/* -webkit-animation-play-state:paused;*/
+				  }
+		/*不是动画，叫关键帧，transform值按顺序排即可，不必补全*/
+		@keyframes spincube   
+		{
+			0% {transform: translateZ( -150px ) rotateX(   0deg ) rotateY(   0deg );}
+			100% {transform: translateZ( -150px ) rotateX(   360deg ) rotateY(   360deg );} 
+		}
+
+		#cube div {width:298px;height:298px;display:block;position: absolute;border:1px solid black;}
+
+		#cube p {font-size: 150px;position: absolute;left:0.7em;top:-0.5em;color:white;opacity: 0.8;}
+
+		#cube div:nth-of-type(1) {background-color: red;opacity:0.7;transform:translateZ(152px);}
+		#cube div:nth-of-type(2) {background-color: red;opacity:0.7;transform:translateZ(-152px);}		
+		#cube div:nth-of-type(3) {background-color: yellow;opacity:0.7;transform:rotateY(-90deg) translateZ(152px);}
+		#cube div:nth-of-type(4) {background-color: yellow;opacity:0.7;transform:rotateY(90deg) translateZ(152px);}
+		#cube div:nth-of-type(5) {background-color: blue;opacity:0.7;transform:rotateX(90deg) translateZ(152px);}
+		#cube div:nth-of-type(6) {background-color: blue;opacity:0.7;transform:rotateX(-90deg) translateZ(152px);}	
+		/*xyz三个轴是左手关系，按常理理解的话，相当于y轴正角度逆时针旋转*/
+		#rangebar {position: relative;left:300px;display: inline;font-size: 2em;}
+		#ranger {width:500px;}
+		.onebutton {font-size: 1.3em;position: relative;left:300px;}
+		/*#keyframesctr {position: relative;left:300px;font-size: 2em;display: inline;}
+		#keyframesctr button {font-size: 1em;position: relative;left:300px;}*/
+	</style>
+</head>
+<body>
+	<div id="stage">
+	<div id="cube" class="spinning">
+		<div><p>1</p></div>
+		<div><p>2</p></div>
+		<div><p>3</p></div>
+		<div><p>4</p></div>
+		<div><p>5</p></div>
+		<div><p>6</p></div>
+	</div>
+	</div>
+
+	<form id="rangebar">
+	<label>透视深度:</label><input id="ranger" type="range" min="1" max="2000" value="152">
+    </form>
+
+    <button class="onebutton" onclick="myFunction()">查看</button>
+    <br>
+    <br>
+   <!-- 	<p id="keyframesctr">停止/播放动画：<button onclick="switch1()">动画开关</button></p> -->
+	
+    <script>
+    var x=0;
+    var y="0px";
+   	function myFunction()
+   	{
+        x=document.getElementById("ranger").value;
+        y=x+"px";
+    	document.getElementById("cube").style.perspective=y;
+    }
+    
+    // function switch1() {
+     
+    // 	// var m=document.getElementsByClassName("spinning");
+    // 	// var s=m.style.animation-play-state;
+    // 	var s=document.getElementById("cube").style.-webkit-animation-play-state;
+    // 	if (s=="paused")
+    // 		{s="running";}
+    // 	else
+    // 		{s="paused";}
+    // }
+    </script>
+</body>
+</html>
+

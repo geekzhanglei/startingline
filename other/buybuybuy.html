@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车初步</title>
+</head>
+<script>
+	
+	function calculate()
+	{	
+		var sum=0,num=0;
+		var fruits=document.getElementsByName('fruit');
+		var fruitsnum=document.getElementsByName("fruitnum");
+		
+			for(var i=0;i<fruits.length;i++)
+				{	if(fruits[i].checked)
+					{
+					if (fruitsnum[i].value<49||fruitsnum[i].value>57)
+						{num=parseFloat(fruitsnum[i].value);}
+					sum+=parseFloat(fruits[i].value)*num;
+					}
+				}
+		if (parseFloat(sum)!=sum)
+			alert("请输入您要购买水果的正确数量")
+		else
+		{document.getElementById('sumprice').innerText=sum+"元";}
+	}
+	function selectCheck(obj)
+	{
+		var fruits=document.getElementsByName("fruit");
+		if (obj.innerText=="全选")
+		{
+			for(i=0;i<fruits.length;i++)
+				{fruits[i].checked=true;}
+		}
+		else 
+		{
+			for(i=0;i<fruits.length;i++)
+				{fruits[i].checked=false;}
+		}
+	}
+	function selected(obj)
+	{
+		var fruits=document.getElementsByName("fruit");
+		if (obj.checked)
+		{
+			for(i=0;i<fruits.length;i++)
+				{fruits[i].checked=true;}
+		}
+		else 
+		{
+			for(i=0;i<fruits.length;i++)
+				{fruits[i].checked=false;}
+		}		
+	}
+</script>
+<body>
+	<div style="border:1px solid black">
+	<h3>简易购物车系统（整数份起卖）</h3>
+	<input type="checkbox" name="fruit" value="10" onclick="calculate()">
+	苹果 10元/份</input>数量:<input name="fruitnum" onkeyup="calculate()" type="text"/><br>
+	<input type="checkbox" name="fruit" value="20" onclick="calculate()">
+	香蕉 20元/份</input>数量:<input name="fruitnum" onkeyup="calculate()" type="text"/><br>
+	<input type="checkbox" name="fruit" value="30" onclick="calculate()">
+	桔子 30元/份</input>数量:<input name="fruitnum" onkeyup="calculate()" type="text"/><br>
+	<input type="checkbox" name="fruit" value="40" onclick="calculate()">
+	核桃 40元/份</input>数量:<input name="fruitnum" onkeyup="calculate()" type="text"/><br>
+	<input type="checkbox" name="fruit" value="50" onclick="calculate()">
+	牛肉 50元/份</input>数量:<input name="fruitnum" onkeyup="calculate()" type="text"/><br>
+	总价格是：<span id="sumprice">0元</span>
+	<br>
+	<p>全选方法一：</p>
+	<a href="#" onclick="selectCheck(this)">全选</a>
+	<a href="#" onclick="selectCheck(this)">取消</a>
+	<p>全选方法二：</p>
+	<input type="checkbox" id="mychoice" onclick="selected(this)">是否全选</input>	
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>div切换功能</title>
+	<style type="text/css">
+	#container {border:1px solid black;position: absolute;left:30%;top:10%;width:300px;height:200px;}
+	ul {list-style-type: none;padding: 0;margin:0;float:left;font-size: 1.5em;text-align: center}
+	li {background-color:#ddd;width:1.7em;height: 65px;}
+	#div1,#div2,#div3 {background-color: pink;width:258px;height: 200px;position: absolute;right: 0;float:left;}
+	a {text-decoration: none;}
+	li>a {display: block;padding:3px;margin:1.7px;background-color: #dddddd;}
+	</style>
+	<script type="text/javascript" language="javascript">
+		function divchange(val)
+			{
+				
+				if (val=="1")
+					{
+						document.getElementById('div1').style.zIndex=255;
+						document.getElementById('div2').style.zIndex=0;
+						document.getElementById('div3').style.zIndex=0;
+					}
+				if(val=="2")
+					{
+						document.getElementById('div1').style.zIndex=1;
+						document.getElementById('div2').style.zIndex=255;
+						document.getElementById('div3').style.zIndex=0;
+					}
+				if(val=="3")
+					{
+						document.getElementById('div1').style.zIndex=1;
+						document.getElementById('div2').style.zIndex=0;
+						document.getElementById('div3').style.zIndex=255;
+					}
+
+			}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<ul>
+			<li><a href="#" onclick="divchange('1')" value="1">先秦</a></li>
+			<li><a href="#" onclick="divchange('2')" value="2">大汉</a></li>
+			<li><a href="#" onclick="divchange('3')" value="3">宋元</a></li>
+		</ul>
+		<div id="div1" style="z-index:2">
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>
+			<a href="#">先秦诸子百家，一个风云变幻的时代</a>			
+		</div>
+		<div id="div2">
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>
+			<a href="#">品秦时明月汉时关，万里长征人未还</a>				
+		</div>
+		<div id="div3">
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>
+			<a href="#">宋元时代是中国古典文化的又一春天</a>				
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>坦克大战前身</title>
+	<style>
+	body {background-color:#C4E1E1;}
+	#tank1 {
+			width:4em;
+			height:4em;
+ 	   	   }
+	#tank2 {
+			width:4em;
+			height:4em;			 
+			}
+	/*#bomb 	{
+			width:3em;
+			height:2em;
+			}*/
+	#keyboard {
+				position: fixed;
+				left:30%;
+				bottom: 0;
+				border: 0.125em solid red;
+				
+				
+				color:blue;
+				text-align: center;
+				background-color:#4DFFFF;
+			  }
+	tr,td {border:0.0625em dotted black;}
+	.empty {width:3em;height:3em ;}
+	.and {width: 9em;height: 9em;}
+	button {width:2.9em;height: 2.9em;font-size: 1em;}
+	</style>
+	<script>
+		function movement()
+		{	
+			this.move=function(direction)
+			{
+				switch (direction)
+				{
+					case 1:
+					// 1234为上下左右
+					var top=$("tank1").style.top;
+					var upnum=parseInt(top)-1;
+					$("tank1").style.top=upnum+"em";
+					myrotate(1);
+					break;
+
+					case 2:
+					var down=$("tank1").style.top;
+					var downnum=parseInt(down)+1;
+					$("tank1").style.top=downnum+"em";
+					myrotate(2);
+					break;
+
+					case 3:
+					var left=$("tank1").style.left;
+					var leftnum=parseInt(left)-1;
+					$("tank1").style.left=leftnum+"em";
+					myrotate(3);
+					break;
+
+					case 4:
+					var right=$("tank1").style.left;
+					var rightnum=parseInt(right)+1;
+					$("tank1").style.left=rightnum+"em";
+					myrotate(4);
+					break;
+
+				}
+			}
+			// 支持键盘程序,event表示键按下
+			this.keyboardmove=function(event)
+			{
+				switch (event.keyCode)
+				{
+					case 87:
+					var top=$("tank1").style.top;
+					var upnum=parseInt(top)-1;
+					$("tank1").style.top=upnum+"em";
+					myrotate(1);
+					break;
+					case 83:
+					var down=$("tank1").style.top;
+					var downnum=parseInt(down)+1;
+					$("tank1").style.top=downnum+"em";
+					myrotate(2);
+					break;
+					case 65:
+					var left=$("tank1").style.left;
+					var leftnum=parseInt(left)-1;
+					$("tank1").style.left=leftnum+"em";
+					myrotate(3);
+					break;
+					case 68:
+					var right=$("tank1").style.left;
+					var rightnum=parseInt(right)+1;
+					$("tank1").style.left=rightnum+"em";
+					myrotate(4);
+					break;
+					case 32:
+					this.attack();
+					break;
+				}
+			}
+
+			this.attack=function()
+			{
+				$("tank1").style.transform="rotate(0deg)";
+				
+				var mybomb=document.createElement("img");
+				mybomb.src="../image/bomb.png";
+				mybomb.style.width=3+"em";
+				mybomb.style.height=2+"em";
+				mybomb.style.position="absolute";
+				mybomb.id="bomb";
+				//炮弹的生成位置
+				var current=$("tank1").style.left;
+				current=parseInt(current);
+				mybomb.style.left=current+"em";
+
+				var topt1=$("tank1").style.top;
+				topt1=parseInt(topt1);
+				mybomb.style.top=topt1+1+"em";
+				//炮弹产生
+				$("bombdiv").appendChild(mybomb);
+
+				//目标位置获取，炮弹位置初始化
+				var tank2left=parseInt($("tank2").style.left);
+				// 这行锁定目标的位置范围，暂时还用不上
+				// var tank2top=parseInt($("tank2").style.top);
+				var i=current+4;
+				//炮弹发射过程
+				var bombmove=setInterval(
+					function(){
+					i+=2;
+					mybomb.style.left=i+"em";
+
+					if (i>=tank2left)
+						{
+							clearInterval(bombmove);
+							$("bombdiv").removeChild(mybomb);
+						}
+						
+					},100)
+				
+				// $("bombdiv").removeChild("mybomb");
+				// bomb的父级元素为空，不能挂子元素
+				// $("bomb").parentNode.appendChild(mybomb);
+
+			}
+		}
+
+		// 坦克方向变化
+		function myrotate(facedir)
+		{	
+			var currentpos=0;
+			switch (facedir)
+			// switch语句需要括号括起来
+			// 方向控制上下左右（下和右一类，上和左一类）
+			{
+			case 1:
+			$("tank1").style.transform="rotate(-90deg)";
+			currentpos=1;
+			break;
+			case 2:
+			$("tank1").style.transform="rotate(90deg)";
+			currentpos=2;
+			break;
+			case 3:
+			$("tank1").style.transform="rotate(180deg)";
+			currentpos=3;
+			break;
+			case 4:
+			$("tank1").style.transform="rotate(0deg)";
+			currentpos=4;
+			break;
+			}			
+		}
+		function $(id)
+		{
+			var idres=document.getElementById(id);
+			return idres;
+		}
+
+		var mymovement=new movement();
+	</script>
+</head>
+<body onkeydown="mymovement.keyboardmove(event)">
+	<p style="color:#000093">js改变内部样式表中的元素属性做不到，仍然采用了内联样式表;table键盘；主要练习增删元素
+	</p>
+	<p style="color:blue">第二种思路：四张图片，上下左右分别是四个图，这四个图排在一起，用background-position属性</p>
+	<p style="color:black">已经支持键盘控制</p>
+	<div id="tank1div"><img id="tank1" 
+						src="../image/tank.png" 
+						alt="img is gone" 
+						style="position: absolute;left:1em;top:20em;transform:rotate(0deg)">
+	</div>
+	<div id="bombdiv"></div>
+	<div id="tank2div"><img id="tank2" 
+						src="../image/tank.png"
+						alt="img is gone"
+						style="position: absolute;left:45em;top:20em;">
+	</div>
+	<table id="keyboard">
+		<tr>
+			<td class="empty"></td>
+			<td class="empty"><button onclick="mymovement.move(1)">上</button></td>
+			<td class="empty"></td>
+			<td class="and" colspan="3" rowspan="3"><button onclick="mymovement.attack()">攻击</button></td>
+
+		</tr>
+		<tr>
+			<td class="empty"><button onclick="mymovement.move(3)">左</button></td>
+			<td class="empty"></td>
+			<td class="empty"><button onclick="mymovement.move(4)">右</button></td>
+		</tr>
+		<tr>
+			<td class="empty"></td>
+			<td class="empty"><button onclick="mymovement.move(2)">下</button></td>
+			<td class="empty"></td>
+		</tr>
+	</table>
+</body>
+</html>

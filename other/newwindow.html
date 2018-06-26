@@ -1,0 +1,19 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset='UTF-8'">
+	<title>子窗口</title>
+</head>
+<body>
+	<input type="text" id="shuru" value="在这里输入文本">
+	<input type="button" onclick="opennw()" value="传递(opener父子元素交互属性只有ie支持)">
+	<script>
+	function opennw()
+	{
+	var a=document.getElementById("shuru").value;
+
+	// opener属性ie支持，chrome不支持
+	window.opener.document.getElementById("myspan").innerText=a;	
+	}
+	</script>
+</body>
+</html>

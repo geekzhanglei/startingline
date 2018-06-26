@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+
+    <style media="screen">
+        .stage {
+            width: 400px;
+            height: 292px;
+            position: relative;
+            margin: 120px auto 40px;
+            border: 1px solid #CCC;
+            -webkit-perspective: 1100px;
+            -moz-perspective: 1100px;
+            -o-perspective: 1100px;
+            perspective: 1100px;
+        }
+
+        #container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            -webkit-transform: translateZ( -481px);
+            -moz-transform: translateZ( -481px);
+            -o-transform: translateZ( -481px);
+            transform: translateZ( -481px);
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: -webkit-transform 1s;
+            -moz-transition: -moz-transform 1s;
+            -o-transition: -o-transform 1s;
+            transition: transform 1s;
+        }
+
+        #container img {
+            display: block;
+            position: absolute;
+            width: 350px;
+            max-height: 262px;
+            left: 10px;
+            bottom: 10px;
+            border: 1px solid black;
+            opacity: 0.9;
+            margin: 10px;
+
+        }
+
+
+        #container img:nth-child(1) {
+            -webkit-transform: rotateY(0deg) translateZ(520px);
+            -moz-transform: rotateY(0deg) translateZ(520px);
+            -o-transform: rotateY(0deg) translateZ(520px);
+            transform: rotateY(0deg) translateZ(520px);
+        }
+
+        #container img:nth-child(2) {
+            -webkit-transform: rotateY(40deg) translateZ(520px);
+            -moz-transform: rotateY(40deg) translateZ(520px);
+            -o-transform: rotateY(40deg) translateZ(520px);
+            transform: rotateY(40deg) translateZ(520px);
+        }
+
+        #container img:nth-child(3) {
+            -webkit-transform: rotateY(80deg) translateZ(520px);
+            -moz-transform: rotateY(80deg) translateZ(520px);
+            -o-transform: rotateY(80deg) translateZ(520px);
+            transform: rotateY(80deg) translateZ(520px);
+        }
+
+        #container img:nth-child(4) {
+            -webkit-transform: rotateY(120deg) translateZ(520px);
+            -moz-transform: rotateY(120deg) translateZ(520px);
+            -o-transform: rotateY(120deg) translateZ(520px);
+            transform: rotateY(120deg) translateZ(520px);
+        }
+
+        #container img:nth-child(5) {
+            -webkit-transform: rotateY(160deg) translateZ(520px);
+            -moz-transform: rotateY(160deg) translateZ(520px);
+            -o-transform: rotateY(160deg) translateZ(520px);
+            transform: rotateY(160deg) translateZ(520px);
+        }
+
+        #container img:nth-child(6) {
+            -webkit-transform: rotateY(200deg) translateZ(520px);
+            -moz-transform: rotateY(200deg) translateZ(520px);
+            -o-transform: rotateY(200deg) translateZ(520px);
+            transform: rotateY(200deg) translateZ(520px);
+        }
+
+        #container img:nth-child(7) {
+            -webkit-transform: rotateY(240deg) translateZ(520px);
+            -moz-transform: rotateY(240deg) translateZ(520px);
+            -o-transform: rotateY(240deg) translateZ(520px);
+            transform: rotateY(240deg) translateZ(520px);
+        }
+
+        #container img:nth-child(8) {
+            -webkit-transform: rotateY(280deg) translateZ(520px);
+            -moz-transform: rotateY(280deg) translateZ(520px);
+            -o-transform: rotateY(280deg) translateZ(520px);
+            transform: rotateY(280deg) translateZ(520px);
+        }
+
+        #container img:nth-child(9) {
+            -webkit-transform: rotateY(320deg) translateZ(520px);
+            -moz-transform: rotateY(320deg) translateZ(520px);
+            -o-transform: rotateY(320deg) translateZ(520px);
+            transform: rotateY(320deg) translateZ(520px);
+        }
+
+        button {
+            float: left;
+            margin: 0 9em;
+            margin-top: 5em;
+            background-color: #FFF8DC;
+            height: 3em;
+            width: 10em;
+            text-align: center;
+            border: 0.0625em solid black;
+        }
+
+        #butt {
+            position: relative;
+            margin-left: 20em;
+        }
+    </style>
+
+
+
+    <body style="background-color: rgb(204, 232, 207);">
+
+
+        <section class="stage">
+            <div id="container" style="transform: translateZ(-481px) rotateY(0deg);">
+                <img src="../image/cat/1.jpg" class="cat1" />
+                <img src="../image/cat/2.jpg" class="cat2" />
+                <img src="../image/cat/3.jpg" class="cat3" />
+                <img src="../image/cat/4.jpg" class="cat4" />
+                <img src="../image/cat/5.jpg" class="cat5" />
+                <img src="../image/cat/6.jpg" class="cat6" />
+                <img src="../image/cat/7.jpg" class="cat7" />
+                <img src="../image/cat/8.jpg" class="cat8" />
+                <img src="../image/cat/9.jpg" class="cat9" />
+            </div>
+        </section>
+
+
+        <section>
+            <div id="butt">
+                <button onclick="toGoHead()" value="上一张">上一张</button>
+                <button onclick="toGoDown()" value="下一张">下一张</button>
+            </div>
+        </section>
+
+        <script>
+            var y = 0;
+            function toGoHead() {
+                var x = document.getElementById("container");
+                y += 40;
+                x.style.transform = "translateZ(-250px) rotateY(" + y + "deg)";
+            }
+            function toGoDown() {
+                var x = document.getElementById("container");
+                y -= 40;
+                x.style.transform = "translateZ(-250px) rotateY(" + y + "deg)";
+            }
+        </script>
+    </body>
+
+</html>

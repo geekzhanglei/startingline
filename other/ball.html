@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>small-ball</title>
+	<style>
+	#sundiv {border:2px solid black;width: 60%;height: 600px;}
+	#ball {width:70px;height:70px;}
+	
+	</style>
+	<script>
+	var directX=1;
+	var directY=1;
+	var ballX=0;
+ 	var ballY=0;
+	function move()
+	{
+		ballX+=directX;
+		ballY+=directY;
+		
+		$("ball").style.top=ballY+"px";
+		$("ball").style.left=ballX+"px";
+
+		if ((ballX>($("sundiv").offsetWidth-68))||ballX<1)
+			directX=-directX;
+		if ((ballY>($("sundiv").offsetHeight-68))||ballY<1)
+			directY=-directY; 
+		
+	}
+	
+
+	function $(id)
+	{var x=document.getElementById(id);
+		return x;}
+	setInterval("move()",10);
+	</script>
+
+</head>
+<body>
+	<div id="sundiv">
+		<img id="ball" src="../image/ball.png" alt="图片失联" style="position:absolute;" >
+	</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>心理测试</title>
+	<link rel="stylesheet" href="../css/header.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../css/helplife.css"/>
+	<link rel="stylesheet" href="../css/footer.css" type="text/css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>小孩子之家</h1>
+			<img class="left_top_icon" src="../image/icon.png" alt="图丢了">
+			<img class="right_top_icon" src="../image/icon.png" alt="图丢了">
+		</div>
+		<div class="navigation">
+			<ul>
+			<li><a href="homepage.html">首页</a></li>
+			<li><a href="text.html">心理调查</a></li>
+			<li><a href="entertainment.html">娱乐休闲</a></li>
+			<li><a href="helplife.html">生活帮助</a></li>
+			<li><a href="practice.html">小小实践</a></li>
+			<li><a href="aboutme.html">关于我</a></li>	
+			</ul>
+		</div>
+
+		<div class="content">
+			  <div>
+			  <video id="video1" style="margin-top:0.9375em;width:420;">
+			    <source src="../video/1.mp4" type="video/mp4" />
+			    <source src="../video/1.ogg" type="video/ogg" />
+			    Your browser does not support HTML5 video.
+			  </video>
+			  <p>已知video元素加载后会使布局变形，该兼容性问题只出现在chrome浏览器,不能重现</p>
+			  	<br/>
+			  	<br/>
+			  	  <button onclick="enablePreload()" type="button">预加载</button>
+				  <button onclick="playPause()">播放/暂停</button> 
+				  <button onclick="makeBig()">放大</button>
+				  <button onclick="makeNormal()">正常</button>
+				  <button onclick="makeSmall()">缩小</button>			  
+			 </div> 
+		</div>
+	
+		<div class="foot">
+			<p>小孩子测试网站中......</p>
+			<p>The website is texting by A Little Boy......</p>
+		</div>
+	</div>
+	<script src="../js/video.js">    //操作DOM时，脚本应该放在末尾，获取元素时文档必须加载完
+	</script>
+</body>
+</html>

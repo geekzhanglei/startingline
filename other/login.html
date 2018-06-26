@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>秘密通道</title>
+    <style>
+        #encryption {
+            position: absolute;
+            left: 40%;
+            top: 20%;
+            background-color: #C4E1FF;
+            margin: 1em;
+            padding: 1em;
+            border: 0.0625em solid black;
+        }
+
+        #confirm {
+            position: relative;
+            margin-left: 3em;
+            width: 5em;
+        }
+
+        #reset {
+            position: relative;
+            margin-left: 2em;
+            margin-right: 3em;
+            width: 5em;
+        }
+    </style>
+    <script>
+        function welcome() {
+            if (($("username").value == "xiaoming") && ($("password").value == "123456")) {
+                return true;
+                alert("ok");
+            }
+            else {
+                return false;
+                alert("no ok");
+            }
+        }
+        function $(id) {
+            var retu = document.getElementById(id);
+            return retu;
+        }
+    </script>
+</head>
+
+<body style="background-color:#CEFFCE">
+    <div id="encryption">
+        <form action="loginwelcome.html">
+            用户名：
+            <input type="text" id="username">
+            <br>
+            <br> 密码&nbsp;:
+            <input type="password" id="password">
+            <br>
+            <br>
+            <input id="confirm" type="submit" onclick="return welcome()" value="登录">
+            <input type="reset" id="reset" value="重置">
+        </form>
+    </div>
+</body>
+
+</html>

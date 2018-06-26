@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- 16进制转十进制 -->
+<html lang="en" ng-app='MyApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>计算器</title>
+	<script src="angular.js"></script>
+	<link rel="stylesheet" href="bootstrap.css">
+</head>
+<dody ng-controller="MyCtrl">
+	<form class="table table-bordered">
+		<h2>当前转换后的十进制数字为：{{result}}</h2><br>
+		<h4>请输入有符号十六进制浮点数，不含小数点：<input type="text" 
+		ng-model="nums" ng-keypress="enter($event)">{{numstemp}}</h4>
+	</form>
+		<button class="btn btn-default col-sm-4" ng-click="clearall()" style="background-color:#4EFEB3;margin-left:25em;margin-bottom:1.4em;">清屏</button>
+	<table class="table table-bordered">
+<!-- 		<tr class="title">
+			<th>序号</th>
+			<th>输入十六进制</th>
+			<th>输出十进制</th>
+		</tr> -->
+		<tr class="data" ng-repeat="item in items">
+			<td>{{item.serial}}</td>
+			<td>{{item.hex}}</td>
+			<td>{{item.num}}</td>
+<!-- 			<td>
+				<button ng-click="delete(item.serial)">删除</button>
+			</td> -->
+		</tr>
+	</table>
+
+</body>
+	<script>
+		var myApp = angular.module('MyApp', []);
+		myApp.controller('MyCtrl', function($scope) {
+		// 计数初始化
+		var count = 0;
+		// 清除屏幕
+		$scope.clearall = function () {
+		$scope.items = [
+			{serial:"序号", hex:"输入的十六进制数", num:"输出的十进制数"}
+		];
+		$scope.numstemp = "";
+		count = 0;			
+		}
+		// 列表初始化
+		$scope.items = [
+			{serial:"序号", hex:"输入的十六进制数", num:"输出的十进制数"}
+		];
+		$scope.enter = function (ev) {
+			if (ev.keyCode != 13) {
+				console.log("hello")
+			return;
+			}
+			var a=new Array();
+			var b=new String();
+			var c=new String();
+			var d=new String();
+			var e=new String();
+			var g=new String();
+			var f=new Number();
+			if ($scope.nums.length != 4) {
+				alert("您输入的数据不是4位，请重新输入");
+				$scope.nums = "";
+				return;
+			}
+			for (var i=0; i<4; i++) {
+				switch( $scope.nums[i] )
+				{
+					case '0' : a[i] = '0000' ;break;
+					case '1' : a[i] = '0001' ;break;
+					case '2' : a[i] = '0010' ;break;
+					case '3' : a[i] = '0011' ;break;
+					case '4' : a[i] = '0100' ;break;
+					case '5' : a[i] = '0101' ;break;
+					case '6' : a[i] = '0110' ;break;
+					case '7' : a[i] = '0111' ;break; 
+					case '8' : a[i] = '1000' ;break; 
+					case '9' : a[i] = '1001' ;break;
+					case 'a' : a[i] = '1010' ;break; 
+					case 'b' : a[i] = '1011' ;break;
+					case 'c' : a[i] = '1100' ;break; 
+					case 'd' : a[i] = '1101' ;break; 
+					case 'e' : a[i] = '1110' ;break; 
+					case 'f' : a[i] = '1111' ;break;
+					case 'A' : a[i] = '1010' ;break; 
+					case 'B' : a[i] = '1011' ;break;
+					case 'C' : a[i] = '1100' ;break; 
+					case 'D' : a[i] = '1101' ;break; 
+					case 'E' : a[i] = '1110' ;break; 
+					case 'F' : a[i] = '1111' ;break;					
+					default: {
+						alert("不是十六进制数，请重新输入");
+						$scope.nums = "";
+						return;
+					} 
+				}
+				// 拼接字符串
+				b+=a[i];
+			}
+			console.log("拼接后数字串是："+b);
+			// 按二进制解析出数字大小
+			for (var i=0;i<4;i++) {
+				a[i] = parseInt(parseInt(a[i],2));
+				console.log(a[i]);
+			}
+			// // 符号位判断,0为正，1为负，并计算最终结果
+			if( (a[0]>=0) && (a[0]<8)) {
+				// signbit=0; 
+				$scope.result=a[0]*Math.pow(16,1)+a[1]*Math.pow(16,0)+
+							  a[2]*Math.pow(16,-1)+a[3]*Math.pow(16,-2);
+			} else {
+				// signbit=1;
+				c=b.slice(1);
+				console.log("拼接后数字串去除符号位："+c);	
+				// $scope.nums=~parseInt($scope.nums,2)
+				// console.log(b);
+				// 各非符号位取反
+				for (var j=0;j<15;j++) {
+					if (c.slice(j,j+1)=="1") {
+						d=d+"0";
+					} else {
+						d=d+'1';
+					}
+				}
+				console.log("取反后的数字串："+d);
+				d=parseInt(d,2)+1;
+				e=d.toString(2);
+				console.log("取反+1的数字串： "+e);
+				// 判断字符串长度，如果长度小于16位，补0
+				if (e.length<16) {
+					for (var y=0;y<(16-e.length);y++) {
+						g+="0";
+					}
+					g=g+e;
+				}
+				console.log("补足16位后的取反加一字符串是："+g);
+				console.log(g.slice(0,4)+"是十进制的"+parseInt(g.slice(0,4),2));
+				console.log(g.slice(4,8)+"是十进制的"+parseInt(g.slice(4,8),2));
+				console.log(g.slice(8,12)+"是十进制的"+parseInt(g.slice(8,12),2));
+				console.log(g.slice(12,16)+"是十进制的"+parseInt(g.slice(12,16),2));
+				f=parseInt(g.slice(0,4),2)*16+parseInt(g.slice(4,8),2)+
+		    	  parseInt(g.slice(8,12),2)*Math.pow(16,-1)+parseInt(g.slice(12,16),2)*Math.pow(16,-2);
+		    	$scope.result ="-"+f;
+				}		
+		// 记录行
+		count+=1;
+		console.log(count);
+		var hexnum = $scope.nums[0]+ $scope.nums[1]+"."+ $scope.nums[2]+ $scope.nums[3];
+		console.log(hexnum);
+		var resultnum = $scope.result;
+		console.log(resultnum);
+		$scope.items.push({serial:count, hex:hexnum, num:resultnum});
+		$scope.numstemp = $scope.nums;
+		$scope.nums = "";
+		}
+
+		// $scope.delete = function (item.serial) {
+		// 	for (var i=0; i<$scope.items.length; i++) {
+		// 		if ($scope.items[i].serial==enum) {
+		// 			$scope.items.splice(i,1);
+		// 			for (var j=i;j<$scope.items.length-i+1;j++) {
+		// 				$scope.items[i].serial-=1;
+		// 			}
+		// 		}
+		// 	}
+		// }
+
+    });
+	</script>
+</html>

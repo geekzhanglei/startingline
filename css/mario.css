@@ -1,0 +1,18 @@
+
+/*因为尚不会js访问外部样式表，外部样式注释掉*/
+/*div.content img#mymario {width:80px;left:30px;top:30px; position:absolute;}*/
+img#friend {position:absolute;top:12.5em;left:18.75em;}
+img#surprise {position:absolute;top:10%;left:60%;width:31.25em;height:18.75em;margin:0;padding: 0;}
+.gamediv{
+	width:100%;
+	height:24em;
+	background-color:pink;	
+}
+.controlcenter{
+	width:12.5em;
+	height:6.25em;
+	border:0.0625em solid red;
+	text-align:center;
+	position: relative;
+	left:45%;
+}

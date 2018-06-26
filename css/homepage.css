@@ -1,0 +1,6 @@
+/*首页内容*/
+
+div.content {width:100%;height:100%;overflow: hidden;position: relative;}
+div.content img {width:100%;height:100%;}
+div.foot {position: relative;}
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1 {float:left;}
+	#div2 {float:right;}
+	#div3 {position:absolute;left:10px;bottom:10px;}
+	/*border-collapse合并边框*/
+	#mytab {border-collapse:collapse;width:600px;height: 300px;border:1px solid black;}
+	.empty {width:100px;height: 100px;}
+	.rows {width:100px;}
+	.cols {height:100px;}
+	.and {width:200px;height: 200px;}
+	td,tr {border: 1px dotted black;}
+	.tg  {border-collapse:collapse;width:500px;height:200px;}
+	.tg td{border-style:solid;border-width:1px;}
+	.tg th{border-style:solid;border-width:1px;}
+
+	</style>
+</head>
+<body>
+	<div id="div1">
+	<p>表格1：表格宽高全靠限定尺寸实现</p>
+	<table id="mytab">
+		<tr>
+			<td class="and" colspan="2" rowspan="2"></td>
+			<td class="rows" rowspan="2"></td>
+			<td class="cols" colspan="3"></td>
+		</tr>
+		<tr>
+			<td class="empty"></td>
+			<td class="cols" colspan="2"></td>
+		</tr>
+		<tr>
+			<td class="empty"></td>
+			<td class="cols" colspan="2"></td>
+			<td class="empty"></td>
+			<td class="cols" colspan="2"></td>
+		</tr>
+	</table>	
+	</div>
+	<div id="div2">
+	<p>表格2：不限定情况下会乱</p>
+	<table id="mytab">
+		<tr>
+			<td class="and1" colspan="2" rowspan="2"></td>
+			<td class="rows1" rowspan="2"></td>
+			<td class="cols1" colspan="3"></td>
+		</tr>
+		<tr>
+			<td class="empty1"></td>
+			<td class="cols1" colspan="2"></td>
+		</tr>
+		<tr>
+			<td class="empty1"></td>
+			<td class="cols1" colspan="2"></td>
+			<td class="empty1"></td>
+			<td class="cols1" colspan="2"></td>
+		</tr>
+	</table>	
+	</div>
+	<div id="div3">
+	<p>表格3：但这种情况下，不加任何尺寸限定却不会乱，这是为什么</p>
+	<table class="tg">
+	  <tr>
+	    <td rowspan="2" colspan="3"></td>
+	    <td colspan="3"></td>
+	     <td rowspan="2"></td>
+	    <td colspan="4"></td>
+	    <td colspan="2"></td>
+	  </tr>
+	  <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	 	<td></td>
+	    <td></td>
+	  </tr>
+	  <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td colspan="3"></td>
+	    <td></td>
+	 	<td></td>
+	 	<td></td>
+	 	<td></td>
+	    <td></td>
+	  </tr>
+	</table>
+	</div>
+</body>
+</html>

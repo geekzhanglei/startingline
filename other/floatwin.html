@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动窗口</title>
+	<style>
+	#win {width:300px;height: 200px;background-color: #9cf;position: absolute;}
+	#title {width:300px;height: 20px;background-color: red;position: absolute;cursor:pointer;}
+	</style>
+	<script>
+	var mousex;
+	var mousey;
+	var divx;
+	var divy;
+	var dragging=0;
+	function startDrag(event)
+	{	
+		var dragging=1;
+		mousex=event.clientX;
+		mousey=event.clientY;
+		divx=parseInt(this.style.left);
+		divy=parseInt(this.style.top);
+
+	}
+	function drag(this,event)
+	{	
+		if (dragging==1)
+		{		
+		this.style.left=(event.clientX-mousex+divx)+"px";
+		this.style.top=(event.clientY-mousey+divy)+"px";
+		}
+
+	}
+	function stopDrag()
+	{
+		dragging=0;
+
+	}
+	</script>
+</head>
+<body>
+	<div id="win"
+		onmousedown="startDrag(this,event)"
+		onmousemove="drag(this,event)"
+		onmouseup="stopDrag()"
+		style="position:absolute"
+		 id="title">
+		 浮动窗口有问题，待完成！
+	</div>
+</body>
+</html>

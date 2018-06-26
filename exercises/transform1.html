@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>rotateY与透视</title>
+	<style>
+		.container {border: 1px solid gray;width:400px;height:400px;position: absolute;left:150px;top:150px;
+					/*perspective:900px;*/}
+		.picture {transform:perspective(1000px) rotateY(45deg);width:100%;height: 100%;background-color: red;opacity: 0.7;}
+		/*可以采用上述两种方法写perspective属性，第二种perspective顺序要在rotate之前*/
+		.home {border:1px dotted gray;width:400px;height:400px;position: absolute;left:800px;top:150px;perspective:500px;}
+		.home div {transform:rotateY(45deg); width:120px;height: 120px;float:left;
+					margin:6px;background-color: blue;opacity: 0.7;}
+	
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="picture">
+		</div>		
+	</div>
+	<div class="home">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
+</body>
+</html>
